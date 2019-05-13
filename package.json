@@ -1,0 +1,15 @@
+{
+  "name": "poetry-markup-language",
+  "version": "1.0.0",
+  "description": "Electron application for marking up poetry with PML",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": "https://github.com/nramos0/poetry-markup-language",
+  "author": "nramos0",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^5.0.0"
+  }
+}
