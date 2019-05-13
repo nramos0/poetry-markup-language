@@ -6,13 +6,19 @@
     <link rel="stylesheet" href="../assets/css/editor.css">
     <script src="../js/editor.js"></script>
 
-    <title>Poetry Markup Language Processor</title>
+    <title>Poetry Markup Language Editor</title>
   </head>
   <body>
-    <h1>Hello World!</h1>
-    <!-- All of the Node.js APIs are available in this renderer process. -->
-    We are using Node.js <script>document.write(process.versions.node)</script>,
-    Chromium <script>document.write(process.versions.chrome)</script>,
-    and Electron <script>document.write(process.versions.electron)</script>.
+    <div class="btn-group">
+
+      <!--In the future the used tags should be parsed in from a file using js, not just typed in one by one here-->
+      <button id="btn-tag-stanza" class="btn btn-large btn-default toolbarBtn">&lt;stanza&gt;</button>
+      <button id="btn-tag-rs-couplet" class="btn btn-large btn-default toolbarBtn">&lt;rs-couplet&gt;</button>
+      <button id="btn-tag-rs-alternate" class="btn btn-large btn-default toolbarBtn">&lt;rs-alternate&gt;</button>
+    </div>
+
+    <div id="edtorAreaContainer">
+      <textarea id="editorArea"></textarea>
+    </div> 
   </body>
 </html>
