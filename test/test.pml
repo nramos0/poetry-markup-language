@@ -1,5 +1,5 @@
 <pml>
-	<rs-alternate>
+	<rs-alternate id="hi">
 	cat
 	dog
 	mat

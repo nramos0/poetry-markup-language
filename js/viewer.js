@@ -1,11 +1,16 @@
 const remote = require('electron').remote;
 const { dialog } = require('electron').remote;
 const fs = require('fs');
+const jsdom = require("jsdom");
+const { JSDOM } = jsdom;
+const nlp = require('nlp_compromise');
+const nlpSyllables = require('nlp-syllables');
 
 /**
  * Prompts the user for a PML file to load and then passes it to the parser
  */
-window.onload = async function() {
+window.onload = function() {
+    nlp.plugin(nlpSyllables);
     var fileToLoadList = dialog.showOpenDialog(
         {
             properties: ['openFile'],
@@ -63,5 +68,15 @@ function getFileData(filename) {
  * @param {String} fileData The data from the PML file in String format
  */
 function loadFileDataToViewer(fileData) {
-    
+    const dom = new JSDOM(fileData);
+    console.log(dom.window.document.getElementById('hi').childNodes[0].nodeValue); 
+}
+
+/**
+ * Returns an array of syllables cut from the parameter string
+ * @param {String} text The text to cut into syllables
+ * @returns {Array} The syllables of the given text as an array of String objects
+ */
+function cutTextToSyllables(text) {
+    return nlp.term(text).syllables();
 }
