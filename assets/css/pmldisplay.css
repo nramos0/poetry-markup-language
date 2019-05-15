@@ -1,0 +1,77 @@
+.symbolism{
+    text-decoration: underline overline wavy blue;
+}
+
+.title{
+    font-weight: bold;
+    font-size: 150%;
+}
+
+.stanza{
+    border: 2px dashed blue;
+    border-radius: 10px;
+}
+
+.couplet{
+    border: 2px dotted red;
+    border-radius: 10px;
+}
+
+.quartain{
+    border: 2px double gold;
+    border-radius: 10px;
+}
+
+.simile{
+    border-left: 5px solid red;
+    border-right: 5px solid red;
+}
+
+.metonymy{
+    border-left: 5px solid blue;
+    border-right: 5px solid blue;
+}
+
+.imagery{
+    border-left: 5px solid gold;
+    border-right: 5px solid gold;
+}
+
+.alliteration{
+    background: rgba(0, 0, 255, 0.5);
+}
+
+.assonance{
+    background: rgba(255, 0, 0, 0.5);
+}
+
+.synecdoche{
+    background: rgba(238, 255, 0, 0.5);
+}
+
+.a{color: #f9701c}
+.b{color: #7524db}
+.c{color: #488b81}
+.d{color: #d38082}
+.e{color: #c40e05}
+.f{color: #dd47dd}
+.g{color: #1b8048}
+.h{color: #175d7e}
+.i{color: #437718}
+.j{color: #fce700}
+.k{color: #6aeca9}
+.l{color: #4020ea}
+.m{color: #e96c43}
+.n{color: #b9811d}
+.o{color: #bdd131}
+.p{color: #444569}
+.q{color: #813bda}
+.r{color: #3e0242}
+.s{color: #131876}
+.t{color: #ed0a7d}
+.u{color: #cf9b12}
+.v{color: #cc3700}
+.w{color: #b80ce3}
+.x{color: #964b00}
+.y{color: #af867d}
+.z{color: #908897}
