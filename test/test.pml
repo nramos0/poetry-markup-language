@@ -1,8 +1,15 @@
 <pml>
 	<rs-alternate id="hi">
-	cat
+	<metaphor>
+		<simile>
+			cat
+		</simile>
+	</metaphor>
 	dog
 	mat
-	log
+	<rs-couplet>
+		log
+		smog
+	</rs-couplet>
 	</rs-alternate>
 </pml>
