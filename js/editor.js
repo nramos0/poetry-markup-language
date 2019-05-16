@@ -1,10 +1,73 @@
+const { dialog } = require('electron').remote;
+const remote = require('electron').remote;
 const path = require('path');
-
+var { clipboard } = require('electron');
+const fs = require('fs');
 /**
  * Performs all functions related to preparing the editor for use
  */
 function prepareEditor() {
     //createToolbarListeners();
+    createSaveButtonListener();
+    createOpenButtonListener();
+}
+
+function createSaveButtonListener() {
+    var editor = document.getElementById('editor');
+    var saveButton = document.getElementById('saveButton');
+    saveButton.addEventListener('click', function(err) {
+        var currentCode = getCurrentCode();
+        undoSelect();
+        showSaveDialogForData(currentCode);
+    });
+}
+
+function createOpenButtonListener() {
+    var editor = document.getElementById('editor');
+    var openButton = document.getElementById('openButton');
+    openButton.addEventListener('click', function(err) {
+        var fileToLoadList = dialog.showOpenDialog(
+        {
+            properties: ['openFile'],
+            filters: [
+                {
+                    name: 'PML File',
+                    extensions: ['pml']
+                }
+            ]
+        });
+
+        if (fileToLoadList == undefined) {
+            return;
+        }
+
+        var filename = fileToLoadList[0];
+        
+        var data = fs.readFileSync(filename, 'utf8');
+        editorInsert(data);
+    });
+}
+
+function showSaveDialogForData(currentCode) {
+    dialog.showSaveDialog(remote.getCurrentWindow(), {
+        defaultPath: 'new.pml'
+    }, (filename) => 
+    {
+        if (filename === undefined) {
+            return;
+        }
+
+        console.log(currentCode)
+        // filename is a string that contains the path and filename created in the save file dialog.  
+        fs.writeFile(filename, currentCode, 'utf8', (err) => {
+            if(err){
+                alert("An error ocurred creating the file "+ err.message)
+                return;
+            }
+                        
+            alert("The file has been succesfully saved");
+        });
+    }); 
 }
 
 /**

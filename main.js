@@ -8,11 +8,12 @@ let mainWindow;
 function createWindow () {
   // Create the browser window.
   mainWindow = new BrowserWindow({
-    width: 400,
-    height: 300,
+    width: 350,
+    height: 165,
     webPreferences: {
       nodeIntegration: true
-    }
+    },
+    resizable: false
   })
 
   // and load the index.html of the app.
@@ -27,6 +28,7 @@ function createWindow () {
     // in an array if your app supports multi windows, this is the time
     // when you should delete the corresponding element.
     mainWindow = null;
+    app.exit();
   })
 }
 

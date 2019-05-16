@@ -18,27 +18,45 @@
     <!-- <div id="edtorAreaContainer">
       <textarea id="editorArea"></textarea>
     </div>  -->
-    
-    <div id="editor"></div>
+    <div id="buttonContainer" style="display: flex; align-content: center;">
+        <button id="saveButton" class="btn btn-large btn-default">Save</button>
+        <button id="openButton" class="btn btn-large btn-default">Open</button>
+    </div>
+    <div id="editor">&lt;pml&gt;&lt;/pml&gt;</div>
     <script src="../ace_src/mode-html.js" type="text/javascript" charset="utf-8"></script> 
     <script src="../ace_src/ace.js" type="text/javascript" charset="utf-8"></script> 
     <script>
-        var editor = ace.edit("editor");
-        var session = editor.getSession();
-        session.on("changeAnnotation", function() {
-          var annotations = session.getAnnotations()||[], i = len = annotations.length;
-          while (i--) {
-            if(/doctype first\. Expected/.test(annotations[i].text)) {
-              annotations.splice(i, 1);
-            }
-          }
-          if(len>annotations.length) {
-            session.setAnnotations(annotations);
-          }
-        });
     
-        var htmlMode = ace.require("ace/mode/html").Mode;
-        editor.session.setMode(new htmlMode());
+      var editor = ace.edit("editor");
+      var session = editor.getSession();
+      session.on("changeAnnotation", function() {
+        var annotations = session.getAnnotations()||[], i = len = annotations.length;
+        while (i--) {
+          if(/doctype first\. Expected/.test(annotations[i].text)) {
+            annotations.splice(i, 1);
+          }
+        }
+        if(len>annotations.length) {
+          session.setAnnotations(annotations);
+        }
+      });
+  
+      var htmlMode = ace.require("ace/mode/html").Mode;
+      editor.session.setMode(new htmlMode());
+      
+      function undoSelect() {
+        
+      }
+
+      function getCurrentCode() {
+        editor.selectAll();
+        return editor.getCopyText();
+      }
+
+      function editorInsert(text) {
+        editor.selectAll();
+        editor.insert(text);
+      }
     </script> 
   </body>
 </html>

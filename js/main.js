@@ -22,7 +22,7 @@ function loadButtonListeners() {
     });
 
     viewerButton.addEventListener('click', function(err) {
-        createWindow(800, 600, 'viewer.html', callback);
+        createWindow(800, 600, 'viewer.html', undefined, false);
         remote.getCurrentWindow().hide();
     });
 }
@@ -64,6 +64,12 @@ function createWindow(widthInput, heightInput, htmlFilename, onClosedCallback, i
       protocol: 'file:',
       slashes: true
     }))
+
+    win.on('closed', function() {
+        remote.getCurrentWindow().show();
+        win = null;
+        
+    });
   
     // Prevents the calling of 'eval()' which allows any arbitrary
     // JS code to be evaluted. This is for security purposes.
